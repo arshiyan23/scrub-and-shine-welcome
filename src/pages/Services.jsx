@@ -1,4 +1,5 @@
 
+import { Droplets, Sparkles, Gem, Crown, Check, Tire, Flower2, Dog, Shield, Lightbulb, Settings } from 'lucide-react';
 import './Services.css';
 
 const Services = () => {
@@ -8,7 +9,7 @@ const Services = () => {
       name: "Basic Wash",
       price: "$15",
       duration: "15 min",
-      icon: "🚿",
+      icon: <Droplets size={48} />,
       features: [
         "Exterior rinse and soap",
         "Hand dry with clean towels",
@@ -21,7 +22,7 @@ const Services = () => {
       name: "Premium Wash",
       price: "$25",
       duration: "25 min",
-      icon: "✨",
+      icon: <Sparkles size={48} />,
       features: [
         "Complete exterior wash",
         "Wax application",
@@ -36,7 +37,7 @@ const Services = () => {
       name: "Deluxe Detail",
       price: "$45",
       duration: "45 min",
-      icon: "💎",
+      icon: <Gem size={48} />,
       features: [
         "Full premium wash package",
         "Clay bar treatment",
@@ -51,7 +52,7 @@ const Services = () => {
       name: "Ultimate Detail",
       price: "$75",
       duration: "90 min",
-      icon: "👑",
+      icon: <Crown size={48} />,
       features: [
         "Complete deluxe package",
         "Paint correction",
@@ -65,12 +66,12 @@ const Services = () => {
   ];
 
   const addOns = [
-    { name: "Tire Shine", price: "$5", icon: "🛞" },
-    { name: "Air Freshener", price: "$3", icon: "🌸" },
-    { name: "Pet Hair Removal", price: "$10", icon: "🐕" },
-    { name: "Fabric Protection", price: "$15", icon: "🛡️" },
-    { name: "Headlight Restoration", price: "$20", icon: "💡" },
-    { name: "Engine Detailing", price: "$25", icon: "⚙️" }
+    { name: "Tire Shine", price: "$5", icon: <Tire size={32} /> },
+    { name: "Air Freshener", price: "$3", icon: <Flower2 size={32} /> },
+    { name: "Pet Hair Removal", price: "$10", icon: <Dog size={32} /> },
+    { name: "Fabric Protection", price: "$15", icon: <Shield size={32} /> },
+    { name: "Headlight Restoration", price: "$20", icon: <Lightbulb size={32} /> },
+    { name: "Engine Detailing", price: "$25", icon: <Settings size={32} /> }
   ];
 
   return (
@@ -104,7 +105,7 @@ const Services = () => {
                   <ul className="features-list">
                     {service.features.map((feature, index) => (
                       <li key={index} className="feature-item">
-                        <span className="check-icon">✓</span>
+                        <Check className="check-icon" size={16} />
                         {feature}
                       </li>
                     ))}

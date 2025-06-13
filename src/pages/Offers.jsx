@@ -1,4 +1,5 @@
 
+import { PartyPopper, Copy, Calendar, FileText } from 'lucide-react';
 import './Offers.css';
 
 const Offers = () => {
@@ -55,7 +56,10 @@ const Offers = () => {
     <div className="offers-page">
       <section className="offers-hero section">
         <div className="container">
-          <h1 className="section-title fade-in">🎉 Special Offers</h1>
+          <h1 className="section-title fade-in">
+            <PartyPopper size={40} style={{ marginRight: '10px', display: 'inline' }} />
+            Special Offers
+          </h1>
           <p className="section-subtitle">
             Save more on our premium car wash services with these exclusive deals!
             Don't miss out on these limited-time offers.
@@ -71,7 +75,12 @@ const Offers = () => {
                 key={offer.id} 
                 className={`offer-card card ${offer.featured ? 'featured' : ''}`}
               >
-                {offer.featured && <div className="featured-badge">🔥 Featured Deal</div>}
+                {offer.featured && (
+                  <div className="featured-badge">
+                    <PartyPopper size={16} style={{ marginRight: '5px' }} />
+                    Featured Deal
+                  </div>
+                )}
                 
                 <div className="offer-header">
                   <div className="offer-discount">{offer.discount}</div>
@@ -85,17 +94,19 @@ const Offers = () => {
                     <div className="code-container">
                       <span className="code-value">{offer.code}</span>
                       <button className="copy-btn" onClick={() => navigator.clipboard.writeText(offer.code)}>
-                        📋
+                        <Copy size={16} />
                       </button>
                     </div>
                   </div>
 
                   <div className="offer-validity">
+                    <Calendar size={16} style={{ marginRight: '5px' }} />
                     <span className="validity-label">Valid Until:</span>
                     <span className="validity-date">{offer.validUntil}</span>
                   </div>
 
                   <div className="offer-terms">
+                    <FileText size={16} style={{ marginRight: '5px' }} />
                     <span className="terms-label">Terms:</span>
                     <p className="terms-text">{offer.terms}</p>
                   </div>

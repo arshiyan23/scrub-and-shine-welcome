@@ -1,4 +1,5 @@
 
+import { Building2, Leaf, Users, Trophy, Gem, Globe, Smile, Rocket, User } from 'lucide-react';
 import './About.css';
 
 const About = () => {
@@ -34,22 +35,22 @@ const About = () => {
               </p>
               <div className="story-highlights">
                 <div className="highlight-item">
-                  <span className="highlight-icon">🌱</span>
+                  <Leaf className="highlight-icon" size={24} />
                   <span className="highlight-text">Eco-Friendly Products</span>
                 </div>
                 <div className="highlight-item">
-                  <span className="highlight-icon">👥</span>
+                  <Users className="highlight-icon" size={24} />
                   <span className="highlight-text">Expert Team</span>
                 </div>
                 <div className="highlight-item">
-                  <span className="highlight-icon">🏆</span>
+                  <Trophy className="highlight-icon" size={24} />
                   <span className="highlight-text">Award Winning Service</span>
                 </div>
               </div>
             </div>
             <div className="story-image">
               <div className="image-placeholder">
-                <div className="placeholder-icon">🏢</div>
+                <Building2 className="placeholder-icon" size={64} />
                 <p>Our Modern Facility</p>
               </div>
             </div>
@@ -62,7 +63,9 @@ const About = () => {
           <h2 className="section-title">Our Values</h2>
           <div className="grid grid-2">
             <div className="value-card card">
-              <div className="value-icon">💎</div>
+              <div className="value-icon">
+                <Gem size={48} />
+              </div>
               <h3 className="value-title">Quality Excellence</h3>
               <p className="value-description">
                 We never compromise on quality. Every wash is performed with meticulous 
@@ -70,7 +73,9 @@ const About = () => {
               </p>
             </div>
             <div className="value-card card">
-              <div className="value-icon">🌍</div>
+              <div className="value-icon">
+                <Globe size={48} />
+              </div>
               <h3 className="value-title">Environmental Care</h3>
               <p className="value-description">
                 Our water recycling system and biodegradable products ensure we protect 
@@ -78,7 +83,9 @@ const About = () => {
               </p>
             </div>
             <div className="value-card card">
-              <div className="value-icon">😊</div>
+              <div className="value-icon">
+                <Smile size={48} />
+              </div>
               <h3 className="value-title">Customer First</h3>
               <p className="value-description">
                 Your satisfaction is our priority. We go above and beyond to ensure 
@@ -86,7 +93,9 @@ const About = () => {
               </p>
             </div>
             <div className="value-card card">
-              <div className="value-icon">🚀</div>
+              <div className="value-icon">
+                <Rocket size={48} />
+              </div>
               <h3 className="value-title">Innovation</h3>
               <p className="value-description">
                 We continuously invest in the latest technology and techniques to 
@@ -105,7 +114,9 @@ const About = () => {
           </p>
           <div className="grid grid-3">
             <div className="team-member card">
-              <div className="member-avatar">👨‍💼</div>
+              <div className="member-avatar">
+                <User size={64} />
+              </div>
               <h3 className="member-name">Mike Johnson</h3>
               <p className="member-role">General Manager</p>
               <p className="member-bio">
@@ -113,7 +124,9 @@ const About = () => {
               </p>
             </div>
             <div className="team-member card">
-              <div className="member-avatar">👩‍🔧</div>
+              <div className="member-avatar">
+                <User size={64} />
+              </div>
               <h3 className="member-name">Sarah Wilson</h3>
               <p className="member-role">Operations Manager</p>
               <p className="member-bio">
@@ -121,7 +134,9 @@ const About = () => {
               </p>
             </div>
             <div className="team-member card">
-              <div className="member-avatar">👨‍🔧</div>
+              <div className="member-avatar">
+                <User size={64} />
+              </div>
               <h3 className="member-name">David Lee</h3>
               <p className="member-role">Lead Technician</p>
               <p className="member-bio">

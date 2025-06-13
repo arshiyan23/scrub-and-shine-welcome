@@ -28,8 +28,8 @@
 }
 
 .brand-icon {
-  font-size: 1.8rem;
   margin-right: 8px;
+  color: var(--primary-yellow);
 }
 
 .brand-text {
@@ -75,20 +75,11 @@
 
 .navbar-toggle {
   display: none;
-  flex-direction: column;
   background: none;
   border: none;
   cursor: pointer;
   padding: 5px;
-}
-
-.navbar-toggle span {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text-dark);
-  margin: 2px 0;
-  transition: 0.3s;
-  border-radius: 2px;
+  color: var(--text-dark);
 }
 
 /* Mobile Styles */
@@ -137,17 +128,5 @@
 
   .navbar-toggle {
     display: flex;
-  }
-
-  .navbar-toggle.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .navbar-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .navbar-toggle.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
   }
 }

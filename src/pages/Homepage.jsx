@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import { Car, Sparkles, Award, Zap, DollarSign, Gift } from 'lucide-react';
 import './Homepage.css';
 
 const Homepage = () => {
@@ -43,7 +44,10 @@ const Homepage = () => {
             </div>
             <div className="hero-image">
               <div className="hero-image-container">
-                <div className="car-icon">🚗✨</div>
+                <div className="car-icon">
+                  <Car size={120} />
+                  <Sparkles size={40} className="sparkle-icon" />
+                </div>
                 <div className="floating-elements">
                   <div className="bubble bubble-1">💧</div>
                   <div className="bubble bubble-2">🧽</div>
@@ -61,21 +65,27 @@ const Homepage = () => {
           <h2 className="section-title">Why Choose AquaWash?</h2>
           <div className="grid grid-3">
             <div className="feature-card card">
-              <div className="feature-icon">🏆</div>
+              <div className="feature-icon">
+                <Award size={48} />
+              </div>
               <h3 className="feature-title">Premium Quality</h3>
               <p className="feature-description">
                 Professional-grade equipment and eco-friendly products for the best results.
               </p>
             </div>
             <div className="feature-card card">
-              <div className="feature-icon">⚡</div>
+              <div className="feature-icon">
+                <Zap size={48} />
+              </div>
               <h3 className="feature-title">Quick Service</h3>
               <p className="feature-description">
                 Fast and efficient service that respects your valuable time.
               </p>
             </div>
             <div className="feature-card card">
-              <div className="feature-icon">💰</div>
+              <div className="feature-icon">
+                <DollarSign size={48} />
+              </div>
               <h3 className="feature-title">Best Prices</h3>
               <p className="feature-description">
                 Competitive pricing with amazing offers and loyalty rewards.
@@ -94,7 +104,8 @@ const Homepage = () => {
               Join thousands of satisfied customers and get your first wash FREE!
             </p>
             <Link to="/customer-login" className="btn btn-success cta-btn">
-              Claim Your Free Wash Now! 🎁
+              <Gift size={20} style={{ marginRight: '8px' }} />
+              Claim Your Free Wash Now!
             </Link>
           </div>
         </div>
