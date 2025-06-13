@@ -1,5 +1,4 @@
-
-import { Droplets, Sparkles, Gem, Crown, Check, Tire, Flower2, Dog, Shield, Lightbulb, Settings } from 'lucide-react';
+import { Droplets, Sparkles, Gem, Crown, Check, Circle, Flower2, Dog, Shield, Lightbulb, Settings } from 'lucide-react';
 import './Services.css';
 
 const Services = () => {
@@ -66,7 +65,7 @@ const Services = () => {
   ];
 
   const addOns = [
-    { name: "Tire Shine", price: "$5", icon: <Tire size={32} /> },
+    { name: "Tire Shine", price: "$5", icon: <Circle size={32} /> },
     { name: "Air Freshener", price: "$3", icon: <Flower2 size={32} /> },
     { name: "Pet Hair Removal", price: "$10", icon: <Dog size={32} /> },
     { name: "Fabric Protection", price: "$15", icon: <Shield size={32} /> },
