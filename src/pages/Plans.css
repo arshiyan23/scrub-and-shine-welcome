@@ -1,0 +1,258 @@
+
+.plans-hero {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+  text-align: center;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.plan-card {
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-blue);
+  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
+}
+
+.plan-card.popular {
+  border-color: var(--accent-orange);
+  box-shadow: 0 20px 40px -12px rgba(249, 115, 22, 0.2);
+  background: linear-gradient(135deg, #fff9f0, var(--white));
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-orange);
+  color: var(--white);
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.plan-header {
+  margin-bottom: 30px;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.plan-pricing {
+  margin-bottom: 15px;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 5px;
+}
+
+.plan-card.popular .plan-price {
+  color: var(--accent-orange);
+}
+
+.plan-original-price {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-decoration: line-through;
+  margin-bottom: 10px;
+}
+
+.plan-description {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.plan-features {
+  margin-bottom: 30px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.feature-item {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+.check-icon {
+  color: var(--success-green);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.plan-btn {
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.plan-savings {
+  text-align: center;
+}
+
+.savings-text {
+  color: var(--success-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.comparison-section {
+  background: var(--white);
+}
+
+.comparison-table-container {
+  overflow-x: auto;
+  margin-top: 40px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table th {
+  background: var(--primary-blue);
+  color: var(--white);
+  padding: 20px 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feature-header {
+  text-align: left !important;
+  background: var(--text-dark) !important;
+}
+
+.comparison-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.feature-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: left !important;
+  background: var(--light-blue);
+}
+
+.feature-value {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.faq-section {
+  background: var(--background);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.faq-item {
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.15);
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.faq-answer {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .plan-card {
+    padding: 25px 20px;
+  }
+
+  .plan-price {
+    font-size: 2rem;
+  }
+
+  .comparison-table-container {
+    font-size: 0.85rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 12px 8px;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .faq-item {
+    padding: 20px;
+  }
+}
+
+/* Table styling improvements */
+.comparison-table tr:nth-child(even) {
+  background: var(--light-blue);
+}
+
+.comparison-table tr:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
