@@ -23,12 +23,12 @@ body {
   padding-top: 80px; /* Account for fixed navbar */
 }
 
-/* Color Variables */
+/* Color Variables - Updated to Yellow Theme */
 :root {
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --secondary-blue: #3b82f6;
-  --light-blue: #eff6ff;
+  --primary-yellow: #eab308;
+  --primary-yellow-dark: #ca8a04;
+  --secondary-yellow: #facc15;
+  --light-yellow: #fefce8;
   --accent-orange: #f97316;
   --success-green: #10b981;
   --text-dark: #1f2937;
@@ -59,23 +59,23 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--primary-blue);
+  background-color: var(--primary-yellow);
   color: var(--white);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-blue-dark);
+  background-color: var(--primary-yellow-dark);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background-color: var(--white);
-  color: var(--primary-blue);
-  border: 2px solid var(--primary-blue);
+  color: var(--primary-yellow);
+  border: 2px solid var(--primary-yellow);
 }
 
 .btn-secondary:hover {
-  background-color: var(--primary-blue);
+  background-color: var(--primary-yellow);
   color: var(--white);
 }
 
@@ -146,8 +146,8 @@ body {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
 }
 
 .form-textarea {
@@ -164,8 +164,8 @@ body {
 
 .form-textarea:focus {
   outline: none;
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--primary-yellow);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
 }
 
 .grid {

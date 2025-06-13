@@ -33,7 +33,7 @@
 }
 
 .brand-text {
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
 }
 
 .navbar-menu {
@@ -53,13 +53,13 @@
 }
 
 .navbar-link:hover {
-  color: var(--primary-blue);
-  background-color: var(--light-blue);
+  color: var(--primary-yellow);
+  background-color: var(--light-yellow);
 }
 
 .navbar-link.active {
-  color: var(--primary-blue);
-  background-color: var(--light-blue);
+  color: var(--primary-yellow);
+  background-color: var(--light-yellow);
 }
 
 .navbar-actions {

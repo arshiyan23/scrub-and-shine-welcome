@@ -55,13 +55,13 @@
 }
 
 .tab-btn.active {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
 }
 
 .tab-btn:not(.active):hover {
-  background: var(--light-blue);
-  color: var(--primary-blue);
+  background: var(--light-yellow);
+  color: var(--primary-yellow);
 }
 
 /* Overview Tab */
@@ -87,7 +87,7 @@
 
 .stat-icon {
   font-size: 2.5rem;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   width: 70px;
   height: 70px;
   display: flex;
@@ -99,7 +99,7 @@
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 4px;
 }
 
@@ -130,7 +130,7 @@
   align-items: flex-start;
   gap: 15px;
   padding: 15px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
 }
 
@@ -181,7 +181,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
 }
 
 .customers-table-container {
@@ -216,7 +216,7 @@
 }
 
 .customers-table tr:hover {
-  background: var(--light-blue);
+  background: var(--light-yellow);
 }
 
 .customer-name {
@@ -261,7 +261,7 @@
 }
 
 .btn-small.btn-primary {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
 }
 
@@ -307,7 +307,7 @@
 }
 
 .offer-item {
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
   padding: 20px;
   transition: all 0.3s ease;
@@ -388,7 +388,7 @@ input:checked + .toggle-slider:before {
 
 .offer-code {
   font-weight: 600;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
 }
 
 .offer-discount {

@@ -1,6 +1,6 @@
 
 .plans-hero {
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, var(--light-yellow) 0%, var(--white) 100%);
   text-align: center;
 }
 
@@ -20,8 +20,8 @@
 
 .plan-card:hover {
   transform: translateY(-8px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
+  border-color: var(--primary-yellow);
+  box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.2);
 }
 
 .plan-card.popular {
@@ -62,7 +62,7 @@
 .plan-price {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 5px;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .comparison-table th {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
   padding: 20px 15px;
   font-weight: 600;
@@ -172,7 +172,7 @@
   font-weight: 600;
   color: var(--text-dark);
   text-align: left !important;
-  background: var(--light-blue);
+  background: var(--light-yellow);
 }
 
 .feature-value {
@@ -250,9 +250,9 @@
 
 /* Table styling improvements */
 .comparison-table tr:nth-child(even) {
-  background: var(--light-blue);
+  background: var(--light-yellow);
 }
 
 .comparison-table tr:hover {
-  background: rgba(37, 99, 235, 0.05);
+  background: rgba(234, 179, 8, 0.05);
 }

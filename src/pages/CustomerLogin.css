@@ -1,7 +1,7 @@
 
 .customer-login-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, var(--light-yellow) 0%, var(--white) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
   text-align: center;
   margin-bottom: 30px;
   padding: 20px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 12px;
 }
 
@@ -88,7 +88,7 @@
 .forgot-password {
   display: block;
   text-align: center;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   text-decoration: none;
   font-size: 0.9rem;
   margin-top: 15px;
