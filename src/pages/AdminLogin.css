@@ -115,7 +115,7 @@
   background: var(--light-blue);
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid var(--primary-blue);
+  border: 1px solid var(--primary-yellow);
 }
 
 .demo-credentials h4 {
@@ -170,6 +170,6 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--text-dark), var(--primary-blue));
+  background: linear-gradient(90deg, var(--text-dark), var(--primary-yellow));
   border-radius: 16px 16px 0 0;
 }

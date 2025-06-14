@@ -25,9 +25,9 @@ body {
 
 /* Color Variables */
 :root {
-  --primary-blue: #2563eb;
-  --primary-blue-dark: #1d4ed8;
-  --secondary-blue: #3b82f6;
+  --primary-yellow: #ffc10d;
+  --primary-yellow-dark: #e7ad00;
+  --secondary-blue: #de9800;
   --light-blue: #eff6ff;
   --accent-orange: #f97316;
   --success-green: #10b981;
@@ -59,23 +59,23 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--primary-blue);
+  background-color: var(--primary-yellow);
   color: var(--white);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-blue-dark);
+  background-color: var(--primary-yellow-dark);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background-color: var(--white);
-  color: var(--primary-blue);
-  border: 2px solid var(--primary-blue);
+  color: var(--primary-yellow);
+  border: 2px solid var(--primary-yellow);
 }
 
 .btn-secondary:hover {
-  background-color: var(--primary-blue);
+  background-color: var(--primary-yellow);
   color: var(--white);
 }
 
@@ -146,7 +146,7 @@ body {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
@@ -164,7 +164,7 @@ body {
 
 .form-textarea:focus {
   outline: none;
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 

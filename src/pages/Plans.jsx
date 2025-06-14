@@ -1,4 +1,3 @@
-
 import './Plans.css';
 
 const Plans = () => {
@@ -125,17 +124,17 @@ const Plans = () => {
                   </ul>
                 </div>
 
-                <button className="btn btn-primary plan-btn">
-                  {plan.type === 'single' ? 'Get Started' : 'Subscribe Now'}
-                </button>
+                <div className="plan-actions">
+                  <button className="btn btn-primary plan-btn">
+                    {plan.type === 'single' ? 'Get Started' : 'Subscribe Now'}
+                  </button>
 
-                {plan.type !== 'single' && (
-                  <div className="plan-savings">
+                  {plan.type !== 'single' && (
                     <span className="savings-text">
                       💰 Save up to {plan.type === 'monthly' ? '35%' : '40%'} vs pay-per-wash
                     </span>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             ))}
           </div>

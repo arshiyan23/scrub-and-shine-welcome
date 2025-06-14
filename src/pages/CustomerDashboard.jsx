@@ -1,79 +1,83 @@
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // ✅ using context
+import api from '../api/axios';
 import './CustomerDashboard.css';
 
 const CustomerDashboard = () => {
-  const [couponGenerated, setCouponGenerated] = useState(false);
+  const navigate = useNavigate();
+  const { token } = useAuth(); // ✅ use context for token
+  const [user, setUser] = useState(null);
+  const [coupon, setCoupon] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const customerData = {
-    name: "John Doe",
-    phone: "+1 (555) 123-4567",
-    email: "john.doe@email.com",
-    joinDate: "March 15, 2024",
-    totalWashes: 0,
-    loyaltyPoints: 0
-  };
-
-  const generateFreeCoupon = () => {
-    setIsGenerating(true);
-    
-    // Simulate coupon generation and email sending
-    setTimeout(() => {
-      setCouponGenerated(true);
-      setIsGenerating(false);
-      
-      // Simulate email sending
-      console.log('Free wash coupon sent to:', customerData.email);
-    }, 3000);
-  };
-
-  const upcomingOffers = [
-    {
-      id: 1,
-      title: "Weekend Special",
-      description: "20% off on Premium Wash",
-      validUntil: "2024-06-30",
-      code: "WEEKEND20"
-    },
-    {
-      id: 2,
-      title: "Loyalty Bonus",
-      description: "Buy 3 washes, get 1 free",
-      validUntil: "2024-07-15",
-      code: "LOYAL3FOR1"
+  useEffect(() => {
+    if (!token) {
+      navigate('/customer-login');
+      return;
     }
-  ];
+
+    const fetchProfile = async () => {
+      try {
+        const res = await api.get('/api/user/profile', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(res.data.user);
+        setCoupon(res.data.user.couponCode || null);
+      } catch (err) {
+        console.error('Error fetching profile:', err);
+        navigate('/customer-login');
+      }
+    };
+
+    fetchProfile();
+  }, [token, navigate]);
+
+  const generateFreeCoupon = async () => {
+    setIsGenerating(true);
+    try {
+      const res = await api.post('/api/coupon/generate', {}, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCoupon(res.data.couponCode);
+    } catch (err) {
+      console.error('Error generating coupon:', err);
+      alert('Failed to generate coupon');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  if (!user) return <div className="loading">Loading dashboard...</div>;
 
   return (
     <div className="customer-dashboard">
       <div className="container">
         <div className="dashboard-header">
-          <h1 className="dashboard-title">Welcome back, {customerData.name}! 👋</h1>
+          <h1 className="dashboard-title">Welcome back, {user.name}! 👋</h1>
           <p className="dashboard-subtitle">
             Manage your account, track your washes, and redeem exclusive offers
           </p>
         </div>
 
+        {/* Coupon card */}
         <div className="dashboard-grid">
-          {/* Free Coupon Section */}
           <div className="dashboard-card coupon-card">
             <div className="card-header">
               <h2 className="card-title">🎁 Your Free Wash Coupon</h2>
             </div>
             <div className="card-content">
-              {!couponGenerated ? (
+              {!coupon ? (
                 <div className="coupon-generate">
                   <div className="coupon-info">
                     <div className="coupon-icon">🎫</div>
                     <h3>Claim Your FREE Basic Wash!</h3>
                     <p>
-                      As a new member, you're entitled to one complimentary basic wash service. 
+                      As a new member, you're entitled to one complimentary basic wash service.
                       Click below to generate your coupon and we'll send it to your email.
                     </p>
                   </div>
-                  <button 
+                  <button
                     className="btn btn-success coupon-btn"
                     onClick={generateFreeCoupon}
                     disabled={isGenerating}
@@ -86,12 +90,12 @@ const CustomerDashboard = () => {
                   <div className="success-icon">✅</div>
                   <h3>Coupon Sent Successfully!</h3>
                   <p>
-                    Your free wash coupon has been sent to <strong>{customerData.email}</strong>
+                    Your free wash coupon has been sent to <strong>{user.email}</strong>
                   </p>
                   <div className="coupon-details">
                     <div className="coupon-code">
                       <span className="code-label">Coupon Code:</span>
-                      <span className="code-value">FREEWASH2024</span>
+                      <span className="code-value">{coupon}</span>
                     </div>
                     <div className="coupon-validity">
                       <span className="validity-label">Valid Until:</span>
@@ -113,26 +117,12 @@ const CustomerDashboard = () => {
             </div>
             <div className="card-content">
               <div className="account-info">
-                <div className="info-item">
-                  <span className="info-label">Name:</span>
-                  <span className="info-value">{customerData.name}</span>
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Phone:</span>
-                  <span className="info-value">{customerData.phone}</span>
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Email:</span>
-                  <span className="info-value">{customerData.email}</span>
-                </div>
-                <div className="info-item">
-                  <span className="info-label">Member Since:</span>
-                  <span className="info-value">{customerData.joinDate}</span>
-                </div>
+                <div className="info-item"><span>Name:</span> <span>{user.name}</span></div>
+                <div className="info-item"><span>Phone:</span> <span>{user.phone}</span></div>
+                <div className="info-item"><span>Email:</span> <span>{user.email}</span></div>
+                <div className="info-item"><span>Member Since:</span> <span>{user.createdAt?.split('T')[0]}</span></div>
               </div>
-              <button className="btn btn-secondary edit-btn">
-                Edit Profile
-              </button>
+              <button className="btn btn-secondary edit-btn">Edit Profile</button>
             </div>
           </div>
 
@@ -145,12 +135,12 @@ const CustomerDashboard = () => {
               <div className="stats-grid">
                 <div className="stat-item">
                   <div className="stat-icon">🚗</div>
-                  <div className="stat-number">{customerData.totalWashes}</div>
+                  <div className="stat-number">{user.totalWashes || 0}</div>
                   <div className="stat-label">Total Washes</div>
                 </div>
                 <div className="stat-item">
                   <div className="stat-icon">⭐</div>
-                  <div className="stat-number">{customerData.loyaltyPoints}</div>
+                  <div className="stat-number">{user.loyaltyPoints || 0}</div>
                   <div className="stat-label">Loyalty Points</div>
                 </div>
               </div>
@@ -160,21 +150,24 @@ const CustomerDashboard = () => {
             </div>
           </div>
 
-          {/* Current Offers */}
+          {/* Offers */}
           <div className="dashboard-card offers-card">
             <div className="card-header">
               <h2 className="card-title">🎉 Current Offers</h2>
             </div>
             <div className="card-content">
               <div className="offers-list">
-                {upcomingOffers.map((offer) => (
+                {[
+                  { id: 1, title: "Weekend Special", description: "20% off on Premium Wash", validUntil: "2024-06-30", code: "WEEKEND20" },
+                  { id: 2, title: "Loyalty Bonus", description: "Buy 3 washes, get 1 free", validUntil: "2024-07-15", code: "LOYAL3FOR1" }
+                ].map((offer) => (
                   <div key={offer.id} className="offer-item">
                     <div className="offer-info">
-                      <h4 className="offer-title">{offer.title}</h4>
-                      <p className="offer-description">{offer.description}</p>
+                      <h4>{offer.title}</h4>
+                      <p>{offer.description}</p>
                       <div className="offer-details">
-                        <span className="offer-code">Code: {offer.code}</span>
-                        <span className="offer-validity">Valid until: {offer.validUntil}</span>
+                        <span>Code: {offer.code}</span>
+                        <span>Valid until: {offer.validUntil}</span>
                       </div>
                     </div>
                   </div>
@@ -188,15 +181,9 @@ const CustomerDashboard = () => {
         </div>
 
         <div className="dashboard-actions">
-          <Link to="/services" className="btn btn-primary action-btn">
-            Book a Wash
-          </Link>
-          <Link to="/plans" className="btn btn-secondary action-btn">
-            View Plans
-          </Link>
-          <Link to="/contact" className="btn btn-secondary action-btn">
-            Contact Us
-          </Link>
+          <Link to="/services" className="btn btn-primary action-btn">Book a Wash</Link>
+          <Link to="/plans" className="btn btn-secondary action-btn">View Plans</Link>
+          <Link to="/contact" className="btn btn-secondary action-btn">Contact Us</Link>
         </div>
       </div>
     </div>

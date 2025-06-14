@@ -20,7 +20,7 @@
 
 .plan-card:hover {
   transform: translateY(-8px);
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
   box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
 }
 
@@ -62,7 +62,7 @@
 .plan-price {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 5px;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .comparison-table th {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
   padding: 20px 15px;
   font-weight: 600;
@@ -213,6 +213,29 @@
   line-height: 1.6;
   margin: 0;
 }
+
+.plan-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* optional: ensures wrapping on very small mobile screens */
+}
+
+.plan-btn {
+  width: auto; /* removes 100% width */
+  padding: 12px 24px; /* optional: adjust padding to match design */
+  white-space: nowrap;
+}
+
+.savings-text {
+  color: var(--success-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

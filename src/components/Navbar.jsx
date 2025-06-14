@@ -21,47 +21,45 @@ const Navbar = () => {
         <div className="navbar-content">
           <Link to="/" className="navbar-brand">
             <span className="brand-icon">🚗</span>
-            <span className="brand-text">AquaWash</span>
+            <span className="brand-text">GoWash</span>
           </Link>
 
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={`navbar-link ${isActive('/') ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className={`navbar-link ${isActive('/about') ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
-            <Link 
-              to="/services" 
+            <Link
+              to="/services"
               className={`navbar-link ${isActive('/services') ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Services
             </Link>
-            <Link 
-              to="/offers" 
+            <Link
+              to="/offers"
               className={`navbar-link ${isActive('/offers') ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Offers
             </Link>
-            <Link 
-              to="/plans" 
-              className={`navbar-link ${isActive('/plans') ? 'active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
+            <a href='#plans'
+              className={`navbar-link ${isActive('#plans') ? 'active' : ''}`}
             >
               Plans
-            </Link>
-            <Link 
-              to="/contact" 
+            </a>
+            <Link
+              to="/contact"
               className={`navbar-link ${isActive('/contact') ? 'active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -71,13 +69,12 @@ const Navbar = () => {
 
           <div className="navbar-actions">
             <Link to="/customer-login" className="btn btn-secondary navbar-btn">
-              Customer Login
+              Login
             </Link>
-            <Link to="/admin-login" className="btn btn-primary navbar-btn">
+            {/* <Link to="/admin-login" className="btn btn-primary navbar-btn">
               Admin
-            </Link>
+            </Link> */}
           </div>
-
           <button className="navbar-toggle" onClick={toggleMenu}>
             <span></span>
             <span></span>

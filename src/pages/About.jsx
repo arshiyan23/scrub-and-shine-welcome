@@ -7,7 +7,7 @@ const About = () => {
       <section className="about-hero section">
         <div className="container">
           <div className="about-hero-content">
-            <h1 className="section-title fade-in">About AquaWash</h1>
+            <h1 className="section-title fade-in">About GoWash</h1>
             <p className="section-subtitle">
               Your trusted partner in premium car care since 2013. We're passionate about 
               making every vehicle shine with professional quality and exceptional service.
@@ -22,7 +22,7 @@ const About = () => {
             <div className="story-text">
               <h2 className="story-title">Our Story</h2>
               <p className="story-paragraph">
-                AquaWash began with a simple mission: to provide the highest quality car wash 
+                GoWash began with a simple mission: to provide the highest quality car wash 
                 services while caring for our environment and community. What started as a 
                 small family business has grown into the region's most trusted car care center.
               </p>

@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import './Homepage.css';
+import Plans from './Plans';
 
 const Homepage = () => {
   return (
@@ -43,12 +44,7 @@ const Homepage = () => {
             </div>
             <div className="hero-image">
               <div className="hero-image-container">
-                <div className="car-icon">🚗✨</div>
-                <div className="floating-elements">
-                  <div className="bubble bubble-1">💧</div>
-                  <div className="bubble bubble-2">🧽</div>
-                  <div className="bubble bubble-3">✨</div>
-                </div>
+                <img src="/assets/logo-trans.png" alt="" />
               </div>
             </div>
           </div>
@@ -58,7 +54,7 @@ const Homepage = () => {
       {/* Features Section */}
       <section className="features section">
         <div className="container">
-          <h2 className="section-title">Why Choose AquaWash?</h2>
+          <h2 className="section-title">Why Choose GoWash?</h2>
           <div className="grid grid-3">
             <div className="feature-card card">
               <div className="feature-icon">🏆</div>
@@ -84,6 +80,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Plans Section */}
+      <Plans />
 
       {/* CTA Section */}
       <section className="cta-section">

@@ -1,10 +1,17 @@
-
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './CustomerLogin.css';
+import api from '../api/axios';
+import { useAuth } from '../context/AuthContext';
 
 const CustomerLogin = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [isSignup, setIsSignup] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     phone: '',
     password: '',
@@ -12,8 +19,6 @@ const CustomerLogin = () => {
     email: '',
     otp: ''
   });
-  const [otpSent, setOtpSent] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -22,10 +27,9 @@ const CustomerLogin = () => {
     });
   };
 
-  const handleSendOTP = async (e) => {
+  const handleSendOTP = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate OTP sending
     setTimeout(() => {
       setOtpSent(true);
       setIsLoading(false);
@@ -36,14 +40,21 @@ const CustomerLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate authentication
-    setTimeout(() => {
+
+    try {
+      const res = await api.post('/api/auth/login', {
+        phone: formData.phone,
+        password: formData.password
+      });
+
+      login(res.data.token); // Set token via context
+      navigate('/customer-dashboard'); // Redirect
+    } catch (err) {
+      console.error('Login error:', err.response?.data || err.message);
+      alert(err.response?.data?.message || 'Login failed');
+    } finally {
       setIsLoading(false);
-      console.log('Form submitted:', formData);
-      // Redirect to customer dashboard
-      window.location.href = '/customer-dashboard';
-    }, 2000);
+    }
   };
 
   const toggleMode = () => {
@@ -63,14 +74,11 @@ const CustomerLogin = () => {
       <div className="login-container">
         <div className="login-content">
           <div className="login-header">
-            <h1 className="login-title">
-              {isSignup ? '🎉 Join AquaWash' : '👋 Welcome Back'}
-            </h1>
+            <h1 className="login-title">{isSignup ? '🎉 Join GoWash' : '👋 Welcome Back'}</h1>
             <p className="login-subtitle">
-              {isSignup 
-                ? 'Create your account and get your FREE wash coupon!' 
-                : 'Sign in to access your account and exclusive offers'
-              }
+              {isSignup
+                ? 'Create your account and get your FREE wash coupon!'
+                : 'Sign in to access your account and exclusive offers'}
             </p>
           </div>
 
@@ -89,7 +97,6 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-                
                 <div className="form-group">
                   <label className="form-label">Email Address</label>
                   <input
@@ -102,7 +109,6 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
                 <div className="form-group">
                   <label className="form-label">Phone Number</label>
                   <input
@@ -115,7 +121,6 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
                 <div className="form-group">
                   <label className="form-label">Password</label>
                   <input
@@ -128,9 +133,8 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-primary login-btn"
                   disabled={isLoading}
                 >
@@ -144,7 +148,6 @@ const CustomerLogin = () => {
                   <h3>OTP Sent!</h3>
                   <p>Please enter the 6-digit code sent to {formData.phone}</p>
                 </div>
-
                 <div className="form-group">
                   <label className="form-label">Enter OTP</label>
                   <input
@@ -158,17 +161,15 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-success login-btn"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Verifying...' : 'Verify & Create Account 🎁'}
                 </button>
-
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="btn btn-secondary resend-btn"
                   onClick={handleSendOTP}
                 >
@@ -189,7 +190,6 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
                 <div className="form-group">
                   <label className="form-label">Password</label>
                   <input
@@ -202,27 +202,23 @@ const CustomerLogin = () => {
                     required
                   />
                 </div>
-
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-primary login-btn"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Signing In...' : 'Sign In'}
                 </button>
-
                 <Link to="/forgot-password" className="forgot-password">
                   Forgot Password?
                 </Link>
               </form>
             )}
 
-            <div className="login-divider">
-              <span>or</span>
-            </div>
+            <div className="login-divider"><span>or</span></div>
 
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-secondary toggle-btn"
               onClick={toggleMode}
             >
@@ -231,24 +227,12 @@ const CustomerLogin = () => {
           </div>
 
           <div className="login-benefits">
-            <h3 className="benefits-title">Why Join AquaWash?</h3>
+            <h3 className="benefits-title">Why Join GoWash?</h3>
             <div className="benefits-list">
-              <div className="benefit-item">
-                <span className="benefit-icon">🎁</span>
-                <span>Free wash coupon on signup</span>
-              </div>
-              <div className="benefit-item">
-                <span className="benefit-icon">💰</span>
-                <span>Exclusive discounts & offers</span>
-              </div>
-              <div className="benefit-item">
-                <span className="benefit-icon">📅</span>
-                <span>Easy appointment booking</span>
-              </div>
-              <div className="benefit-item">
-                <span className="benefit-icon">🏆</span>
-                <span>Loyalty reward points</span>
-              </div>
+              <div className="benefit-item"><span className="benefit-icon">🎁</span><span>Free wash coupon on signup</span></div>
+              <div className="benefit-item"><span className="benefit-icon">💰</span><span>Exclusive discounts & offers</span></div>
+              <div className="benefit-item"><span className="benefit-icon">📅</span><span>Easy appointment booking</span></div>
+              <div className="benefit-item"><span className="benefit-icon">🏆</span><span>Loyalty reward points</span></div>
             </div>
           </div>
         </div>

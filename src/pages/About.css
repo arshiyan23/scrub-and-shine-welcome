@@ -4,7 +4,7 @@
 }
 
 .about-hero {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-blue));
   color: var(--white);
   text-align: center;
 }
@@ -77,7 +77,7 @@
   align-items: center;
   justify-content: center;
   color: var(--text-light);
-  border: 2px dashed var(--primary-blue);
+  border: 2px dashed var(--primary-yellow);
 }
 
 .placeholder-icon {
@@ -144,7 +144,7 @@
 
 .member-role {
   font-size: 1rem;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   font-weight: 600;
   margin-bottom: 15px;
 }

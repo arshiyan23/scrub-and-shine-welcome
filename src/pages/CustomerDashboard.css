@@ -146,7 +146,7 @@
 
 .code-value {
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   font-size: 1.1rem;
 }
 
@@ -215,7 +215,7 @@
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 5px;
 }
 
@@ -279,7 +279,7 @@
 
 .offer-code {
   font-weight: 600;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
 }
 
 .view-all-btn {

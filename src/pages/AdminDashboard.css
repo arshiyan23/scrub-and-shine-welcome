@@ -55,13 +55,13 @@
 }
 
 .tab-btn.active {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
 }
 
 .tab-btn:not(.active):hover {
   background: var(--light-blue);
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
 }
 
 /* Overview Tab */
@@ -99,7 +99,7 @@
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 4px;
 }
 
@@ -181,7 +181,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
 }
 
 .customers-table-container {
@@ -261,7 +261,7 @@
 }
 
 .btn-small.btn-primary {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
 }
 
@@ -388,7 +388,7 @@ input:checked + .toggle-slider:before {
 
 .offer-code {
   font-weight: 600;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
 }
 
 .offer-discount {

@@ -75,7 +75,7 @@ const Contact = () => {
                   <div className="method-icon">✉️</div>
                   <div className="method-details">
                     <h4>Email Us</h4>
-                    <p>info@aquawash.com<br />We respond within 24 hours</p>
+                    <p>info@GoWash.com<br />We respond within 24 hours</p>
                   </div>
                 </div>
 

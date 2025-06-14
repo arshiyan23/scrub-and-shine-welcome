@@ -27,7 +27,7 @@
 
 .offer-card:hover {
   transform: translateY(-8px);
-  border-color: var(--primary-blue);
+  border-color: var(--primary-yellow);
   box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
 }
 
@@ -58,7 +58,7 @@
 .offer-discount {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   margin-bottom: 15px;
 }
 
@@ -106,16 +106,16 @@
   flex: 1;
   padding: 12px 16px;
   background: var(--light-blue);
-  border: 2px dashed var(--primary-blue);
+  border: 2px dashed var(--primary-yellow);
   border-radius: 8px;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   font-size: 1.1rem;
   text-align: center;
 }
 
 .copy-btn {
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   border: none;
   color: var(--white);
   width: 44px;
@@ -127,7 +127,7 @@
 }
 
 .copy-btn:hover {
-  background: var(--primary-blue-dark);
+  background: var(--primary-yellow-dark);
   transform: scale(1.05);
 }
 
@@ -192,7 +192,7 @@
 .step-number {
   width: 60px;
   height: 60px;
-  background: var(--primary-blue);
+  background: var(--primary-yellow);
   color: var(--white);
   border-radius: 50%;
   display: flex;
@@ -216,7 +216,7 @@
 }
 
 .newsletter-signup {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-blue));
   color: var(--white);
   text-align: center;
 }
@@ -262,7 +262,7 @@
   padding: 12px 24px;
   font-weight: 600;
   background: var(--white);
-  color: var(--primary-blue);
+  color: var(--primary-yellow);
   border: none;
 }
 
