@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Car, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -20,8 +21,8 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar-content">
           <Link to="/" className="navbar-brand">
-            <span className="brand-icon">🚗</span>
-            <span className="brand-text">GoWash</span>
+            <Car className="brand-icon" size={24} />
+            <span className="brand-text">AquaWash</span>
           </Link>
 
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
@@ -75,10 +76,12 @@ const Navbar = () => {
               Admin
             </Link> */}
           </div>
-          <button className="navbar-toggle" onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
+
+          <button 
+            className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`} 
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>

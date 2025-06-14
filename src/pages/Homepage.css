@@ -3,7 +3,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, var(--light-yellow) 0%, var(--white) 100%);
   padding: 100px 0;
   min-height: 80vh;
   display: flex;
@@ -79,6 +79,7 @@
 
 .hero-image-container {
   position: relative;
+<<<<<<< HEAD
   /* width: 300px; */
   /* height: 300px; */
   /* background: var(--primary-yellow); */
@@ -87,6 +88,16 @@
   align-items: center;
   justify-content: center;
   /* box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3); */
+=======
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(234, 179, 8, 0.3);
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
 }
 
 .car-icon {
@@ -185,7 +196,11 @@
 }
 
 .cta-section {
+<<<<<<< HEAD
   background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-blue));
+=======
+  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   padding: 80px 0;
   text-align: center;
 }

@@ -62,7 +62,7 @@
 /* Coupon Card */
 .coupon-card {
   grid-column: span 2;
-  background: linear-gradient(135deg, var(--light-blue), var(--white));
+  background: linear-gradient(135deg, var(--light-yellow), var(--white));
 }
 
 .coupon-generate {
@@ -202,7 +202,7 @@
 .stat-item {
   text-align: center;
   padding: 20px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
 }
 
@@ -228,7 +228,7 @@
 .next-reward {
   text-align: center;
   padding: 15px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
 }
 
@@ -245,7 +245,7 @@
 
 .offer-item {
   padding: 20px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
   margin-bottom: 15px;
 }

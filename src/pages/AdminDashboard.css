@@ -60,7 +60,11 @@
 }
 
 .tab-btn:not(.active):hover {
+<<<<<<< HEAD
   background: var(--light-blue);
+=======
+  background: var(--light-yellow);
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   color: var(--primary-yellow);
 }
 
@@ -87,7 +91,7 @@
 
 .stat-icon {
   font-size: 2.5rem;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   width: 70px;
   height: 70px;
   display: flex;
@@ -130,7 +134,7 @@
   align-items: flex-start;
   gap: 15px;
   padding: 15px;
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
 }
 
@@ -216,7 +220,7 @@
 }
 
 .customers-table tr:hover {
-  background: var(--light-blue);
+  background: var(--light-yellow);
 }
 
 .customer-name {
@@ -307,7 +311,7 @@
 }
 
 .offer-item {
-  background: var(--light-blue);
+  background: var(--light-yellow);
   border-radius: 8px;
   padding: 20px;
   transition: all 0.3s ease;

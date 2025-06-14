@@ -28,7 +28,11 @@
 .offer-card:hover {
   transform: translateY(-8px);
   border-color: var(--primary-yellow);
+<<<<<<< HEAD
   box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
+=======
+  box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.2);
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
 }
 
 .offer-card.featured {
@@ -105,7 +109,11 @@
 .code-value {
   flex: 1;
   padding: 12px 16px;
+<<<<<<< HEAD
   background: var(--light-blue);
+=======
+  background: var(--light-yellow);
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   border: 2px dashed var(--primary-yellow);
   border-radius: 8px;
   font-weight: 700;
@@ -216,7 +224,11 @@
 }
 
 .newsletter-signup {
+<<<<<<< HEAD
   background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-blue));
+=======
+  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+>>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   color: var(--white);
   text-align: center;
 }
@@ -267,7 +279,7 @@
 }
 
 .newsletter-btn:hover {
-  background: var(--light-blue);
+  background: var(--light-yellow);
   transform: translateY(-2px);
 }
 

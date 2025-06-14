@@ -23,12 +23,12 @@ body {
   padding-top: 80px; /* Account for fixed navbar */
 }
 
-/* Color Variables */
+/* Color Variables - Updated to Yellow Theme */
 :root {
-  --primary-yellow: #ffc10d;
-  --primary-yellow-dark: #e7ad00;
-  --secondary-blue: #de9800;
-  --light-blue: #eff6ff;
+  --primary-yellow: #eab308;
+  --primary-yellow-dark: #ca8a04;
+  --secondary-yellow: #facc15;
+  --light-yellow: #fefce8;
   --accent-orange: #f97316;
   --success-green: #10b981;
   --text-dark: #1f2937;
@@ -147,7 +147,7 @@ body {
 .form-input:focus {
   outline: none;
   border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
 }
 
 .form-textarea {
@@ -165,7 +165,7 @@ body {
 .form-textarea:focus {
   outline: none;
   border-color: var(--primary-yellow);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
 }
 
 .grid {
