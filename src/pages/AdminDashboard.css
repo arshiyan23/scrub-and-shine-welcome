@@ -60,11 +60,7 @@
 }
 
 .tab-btn:not(.active):hover {
-<<<<<<< HEAD
-  background: var(--light-blue);
-=======
   background: var(--light-yellow);
->>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   color: var(--primary-yellow);
 }
 

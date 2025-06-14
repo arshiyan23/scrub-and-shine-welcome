@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// App.jsx
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import PublicRoute from './components/PublicRoute';
 
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
@@ -24,6 +24,45 @@ import './App.css';
 
 const queryClient = new QueryClient();
 
+function AppRoutes() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/offers" element={<Offers />} />
+      <Route path="/plans" element={<Plans />} />
+      <Route path="/contact" element={<Contact />} />
+
+      <Route
+        path="/customer-login"
+        element={
+          isAuthenticated
+            ? <Navigate to="/customer-dashboard" replace />
+            : <CustomerLogin />
+        }
+      />
+
+      <Route
+        path="/customer-dashboard"
+        element={
+          <ProtectedRoute>
+            <CustomerDashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path="/admin-login" element={<AdminLogin />} />
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/redeem" element={<RedeemForm />} />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -32,44 +71,10 @@ function App() {
         <Sonner />
         <AuthProvider>
           <Router>
-            <div className="app">
-              <Navbar />
-              <main className="main-content">
-                <Routes>
-                  <Route path="/" element={<Homepage />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/offers" element={<Offers />} />
-                  <Route path="/plans" element={<Plans />} />
-                  <Route path="/contact" element={<Contact />} />
-
-                  {/* Public: Only for non-authenticated users */}
-                  <Route
-                    path="/customer-login"
-                    element={
-                      <PublicRoute>
-                        <CustomerLogin />
-                      </PublicRoute>
-                    }
-                  />
-
-                  {/* Protected: Only for authenticated users */}
-                  <Route
-                    path="/customer-dashboard"
-                    element={
-                      <ProtectedRoute>
-                        <CustomerDashboard />
-                      </ProtectedRoute>
-                    }
-                  />
-
-                  {/* Admin Pages (You can protect these later if needed) */}
-                  <Route path="/admin-login" element={<AdminLogin />} />
-                  <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                  <Route path="/redeem" element={<RedeemForm />} />
-                </Routes>
-              </main>
-            </div>
+            <Navbar />
+            <main className="main-content">
+              <AppRoutes />
+            </main>
           </Router>
         </AuthProvider>
       </TooltipProvider>

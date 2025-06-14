@@ -4,11 +4,7 @@
 }
 
 .about-hero {
-<<<<<<< HEAD
-  background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-blue));
-=======
   background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
->>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
   color: var(--white);
   text-align: center;
 }

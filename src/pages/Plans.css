@@ -21,11 +21,7 @@
 .plan-card:hover {
   transform: translateY(-8px);
   border-color: var(--primary-yellow);
-<<<<<<< HEAD
-  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
-=======
   box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.2);
->>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
 }
 
 .plan-card.popular {

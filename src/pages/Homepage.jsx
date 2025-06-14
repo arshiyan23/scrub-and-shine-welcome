@@ -45,9 +45,6 @@ const Homepage = () => {
             </div>
             <div className="hero-image">
               <div className="hero-image-container">
-<<<<<<< HEAD
-                <img src="/assets/logo-trans.png" alt="" />
-=======
                 <div className="car-icon">
                   <Car size={120} />
                   <Sparkles size={40} className="sparkle-icon" />
@@ -57,7 +54,6 @@ const Homepage = () => {
                   <div className="bubble bubble-2">🧽</div>
                   <div className="bubble bubble-3">✨</div>
                 </div>
->>>>>>> e5bd4abd5b1d65a00763277e1ed26dda98ac12da
               </div>
             </div>
           </div>
