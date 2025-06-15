@@ -20,7 +20,7 @@ import Contact from './pages/Contact';
 import CustomerLogin from './pages/CustomerLogin';
 import CustomerDashboard from './pages/CustomerDashboard';
 import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
+import AdminDashboard from './pages/admin/AdminDashboard';
 import RedeemForm from './pages/RedeemForm';
 
 import './App.css';
