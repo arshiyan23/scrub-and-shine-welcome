@@ -5,7 +5,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { useAdminAuth, AdminAuthProvider } from './context/AdminAuthContext';
+
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminProtectedRoute from './components/AdminProtectedRoute';
 
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
@@ -19,16 +22,18 @@ import CustomerDashboard from './pages/CustomerDashboard';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import RedeemForm from './pages/RedeemForm';
+
 import './App.css';
 
 const queryClient = new QueryClient();
 
 function AppRoutes() {
   const { isAuthenticated } = useAuth();
+  const { adminIsAuthenticated } = useAdminAuth();
 
   return (
     <Routes>
-      {/* ✅ If logged in, redirect from / to dashboard */}
+      {/* ✅ If customer logged in, redirect from / to dashboard */}
       <Route
         path="/"
         element={
@@ -44,17 +49,19 @@ function AppRoutes() {
       <Route path="/plans" element={<Plans />} />
       <Route path="/contact" element={<Contact />} />
 
-      {/* ✅ Show login only if NOT authenticated */}
+      {/* ✅ Show customer login only if NOT authenticated */}
       <Route
         path="/customer-login"
         element={
           isAuthenticated
             ? <Navigate to="/customer-dashboard" replace />
-            : <CustomerLogin />
+            : adminIsAuthenticated
+              ? <Navigate to="/admin-dashboard" replace />
+              : <CustomerLogin />
         }
       />
 
-      {/* ✅ Protect dashboard */}
+      {/* ✅ Protect customer dashboard */}
       <Route
         path="/customer-dashboard"
         element={
@@ -64,8 +71,28 @@ function AppRoutes() {
         }
       />
 
-      <Route path="/admin-login" element={<AdminLogin />} />
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      {/* ✅ Show admin login only if NOT authenticated as admin or customer */}
+      <Route
+        path="/admin-login"
+        element={
+          adminIsAuthenticated
+            ? <Navigate to="/admin-dashboard" replace />
+            : isAuthenticated
+              ? <Navigate to="/customer-dashboard" replace />
+              : <AdminLogin />
+        }
+      />
+
+      {/* ✅ Protect admin dashboard */}
+      <Route
+        path="/admin-dashboard"
+        element={
+          <AdminProtectedRoute>
+            <AdminDashboard />
+          </AdminProtectedRoute>
+        }
+      />
+
       <Route path="/redeem" element={<RedeemForm />} />
 
       {/* Fallback */}
@@ -81,12 +108,14 @@ function App() {
         <Toaster />
         <Sonner />
         <AuthProvider>
-          <Router>
-            <Navbar />
-            <main className="main-content">
-              <AppRoutes />
-            </main>
-          </Router>
+          <AdminAuthProvider>
+            <Router>
+              <Navbar />
+              <main className="main-content">
+                <AppRoutes />
+              </main>
+            </Router>
+          </AdminAuthProvider>
         </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>

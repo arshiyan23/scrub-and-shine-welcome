@@ -1,10 +1,15 @@
-
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../api/axios';
 import './AdminLogin.css';
+import { useAdminAuth } from '../context/AdminAuthContext';
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
+  const { loginAdmin } = useAdminAuth(); // ✅ use context method to set token + state
+
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -23,17 +28,23 @@ const AdminLogin = () => {
     setIsLoading(true);
     setError('');
 
-    // Simulate authentication
-    setTimeout(() => {
-      if (formData.username === 'admin' && formData.password === 'admin123') {
-        setIsLoading(false);
-        console.log('Admin login successful');
-        window.location.href = '/admin-dashboard';
-      } else {
-        setIsLoading(false);
-        setError('Invalid username or password');
+    try {
+      const res = await api.post('/api/admin/login', formData);
+      const token = res.data?.token;
+
+      if (!token) {
+        throw new Error('No token received from backend');
       }
-    }, 2000);
+
+      loginAdmin(token); // ✅ update context
+      navigate('/admin-dashboard'); // ✅ redirect after successful login
+    } catch (err) {
+      console.error('Admin login failed ❌:', err.response?.data || err.message);
+      const backendMessage = err?.response?.data?.error || err?.response?.data?.message;
+      setError(backendMessage || 'Invalid login credentials');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -57,14 +68,14 @@ const AdminLogin = () => {
             )}
 
             <div className="form-group">
-              <label className="form-label">Username</label>
+              <label className="form-label">Email</label>
               <input
-                type="text"
-                name="username"
-                value={formData.username}
+                type="email"
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 className="form-input"
-                placeholder="Enter admin username"
+                placeholder="Enter admin email"
                 required
               />
             </div>
@@ -104,12 +115,6 @@ const AdminLogin = () => {
               <span className="info-icon">⏰</span>
               <span>Session timeout: 30 minutes</span>
             </div>
-          </div>
-
-          <div className="demo-credentials">
-            <h4>Demo Credentials:</h4>
-            <p><strong>Username:</strong> admin</p>
-            <p><strong>Password:</strong> admin123</p>
           </div>
         </div>
       </div>

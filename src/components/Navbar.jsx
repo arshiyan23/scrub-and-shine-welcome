@@ -1,22 +1,30 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Car, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 import { useAuth } from '../context/AuthContext';
+import { useAdminAuth } from '../context/AdminAuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+
+  const { isAuthenticated, logout } = useAuth(); // Customer auth
+  const { isAuthenticated: isAdminAuthenticated, logoutAdmin } = useAdminAuth(); // Admin auth
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const isActive = (path) => location.pathname === path;
 
   const handleLogout = () => {
-    logout();
-    setIsMenuOpen(false); // close menu after logout
-    navigate('/');
+    if (isAdminAuthenticated) {
+      logoutAdmin();
+      navigate('/');
+    } else if (isAuthenticated) {
+      logout();
+      navigate('/');
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -28,7 +36,7 @@ const Navbar = () => {
           </Link>
 
           <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-            {/* Show Dashboard FIRST if logged in */}
+            {/* Show Dashboard FIRST */}
             {isAuthenticated && (
               <Link
                 to="/customer-dashboard"
@@ -38,17 +46,17 @@ const Navbar = () => {
                 Dashboard
               </Link>
             )}
-
-            {!isAuthenticated && (
+            {isAdminAuthenticated && (
               <Link
-                to="/"
-                className={`navbar-link ${isActive('/') ? 'active' : ''}`}
+                to="/admin-dashboard"
+                className={`navbar-link ${isActive('/admin-dashboard') ? 'active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                Dashboard
               </Link>
             )}
 
+            {/* Default Links */}
             <Link
               to="/about"
               className={`navbar-link ${isActive('/about') ? 'active' : ''}`}
@@ -63,20 +71,6 @@ const Navbar = () => {
             >
               Services
             </Link>
-            {/* <Link
-              to="/offers"
-              className={`navbar-link ${isActive('/offers') ? 'active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Offers
-            </Link> */}
-            {/* <a
-              href="#plans"
-              className={`navbar-link`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Plans
-            </a> */}
             <Link
               to="/contact"
               className={`navbar-link ${isActive('/contact') ? 'active' : ''}`}
@@ -86,7 +80,7 @@ const Navbar = () => {
             </Link>
 
             {/* Show Logout LAST if logged in */}
-            {isAuthenticated && (
+            {(isAuthenticated || isAdminAuthenticated) && (
               <button
                 onClick={handleLogout}
                 className="navbar-link logout-btn"
@@ -96,15 +90,16 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Optional: show nothing in desktop navbar-actions, or show buttons if you want */}
+          {/* Right-side button */}
           <div className="navbar-actions desktop-only">
-            {!isAuthenticated ? (
+            {!isAuthenticated && !isAdminAuthenticated && (
               <Link to="/customer-login" className="btn btn-secondary navbar-btn">
                 Login
               </Link>
-            ) : null}
+            )}
           </div>
 
+          {/* Hamburger toggle */}
           <button
             className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`}
             onClick={toggleMenu}
