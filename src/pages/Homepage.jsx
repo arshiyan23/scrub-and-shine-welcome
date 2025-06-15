@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Car, Sparkles, Award, Zap, DollarSign, Gift } from 'lucide-react';
 import './Homepage.css';

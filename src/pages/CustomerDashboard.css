@@ -1,3 +1,25 @@
+.dashboard-loading-screen {
+  background-color: white; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid #fff;
+  border-top: 6px solid var(--primary-yellow); 
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .customer-dashboard {
   padding: 40px 0;
